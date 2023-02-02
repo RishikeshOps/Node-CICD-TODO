@@ -8,8 +8,6 @@ node app.js
 
 
 
-
-
 # For jenkin congiguration
 set up jenkins with git-webhook for CICD and add following command in building steps.
 
