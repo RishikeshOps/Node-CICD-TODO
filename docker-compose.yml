@@ -3,4 +3,15 @@ services:
   web:
     build : .
     ports :
-         - "3000:8000"
+         - "8000:3000"
+    volumes:
+      - my_todo_volume:/app
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "demo@123"
+volumes:
+  my_todo_volume:
+    external: true
