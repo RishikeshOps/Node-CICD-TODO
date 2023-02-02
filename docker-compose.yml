@@ -15,3 +15,6 @@ services:
 volumes:
   my_todo_volume:
     external: true
+
+
+# docker volume create --name my_todo_volume --opt type=none --opt device=/home/ubuntu/90daysofdevops/Projects/volume/todo_app_volume --opt o=bind
