@@ -1,7 +1,7 @@
 version : "3.3"
 services: 
   web:
-    image: rishikeshops/node-todo
+    build: .
     ports:
          - "3000:3000"
 #     volumes:
