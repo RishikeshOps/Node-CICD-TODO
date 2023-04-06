@@ -22,24 +22,20 @@ jobs:
           context: .
           push: false
           tags: myimage:latest
-      
+
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Pull Docker image
+        run: |
+          docker-compose pull 
+
       - name: Start Docker Compose
         run: |
           docker-compose up -d
-
-
-#   deploy:
-#     needs: [build]
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v3
-
-# #       - name: Pull Docker image
-# #         run: |
-# #           docker-compose pull 
-
-#       - name: Start Docker Compose
-#         run: |
-#           docker-compose up -d
