@@ -22,7 +22,8 @@ jobs:
           context: .
           push: false
           tags: myimage:latest
-      - name: Start Docker Compose
+          
+      - name: Deploy Application & Database 
         run: |
           docker-compose up -d
 
