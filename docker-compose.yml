@@ -1,7 +1,7 @@
 version : "3.3"
 services: 
   web:
-    build : .
+    image : rishikeshops/node-todo:$(date +"%d-%b-%Y")
     ports :
          - "3000:3000"
     volumes:
