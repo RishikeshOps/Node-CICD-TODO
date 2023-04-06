@@ -1,0 +1,51 @@
+name: MVRC CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -t dockerusername/mvrc:$(date +%s) .
+
+      - name: Push Docker image
+        uses: docker/login-action@v1
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - run: |
+          docker push dockerusername/mvrc:$(date +"%d-%b-%Y")
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+#       - name: Log into DigitalOcean
+#         uses: digitalocean/action-doctl@v2
+#         with:
+#           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Pull Docker image
+        run: |
+          docker-compose pull
+
+      - name: Start Docker Compose
+        run: |
+          docker-compose up --force-recreate --no-deps web
