@@ -4,17 +4,17 @@ services:
     image : rishikeshops/node-todo:$(date +"%d-%b-%Y")
     ports :
          - "3000:3000"
-    volumes:
-      - my_todo_volume:/app
+#     volumes:
+#       - my_todo_volume:/app
   db:
     image: mysql
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "demo@123"
-volumes:
-  my_todo_volume:
-    external: true
+# volumes:
+#   my_todo_volume:
+#     external: true
 
 
 # docker volume create --name my_todo_volume --opt type=none --opt device=/home/ubuntu/90daysofdevops/Projects/volume/todo_app_volume --opt o=bind
