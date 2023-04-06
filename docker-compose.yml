@@ -1,8 +1,8 @@
 version : "3.3"
 services: 
   web:
-    image : rishikeshops/node-todo:$(date +"%d-%b-%Y")
-    ports :
+    image: rishikeshops/node-todo
+    ports:
          - "3000:3000"
 #     volumes:
 #       - my_todo_volume:/app
@@ -11,7 +11,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "demo@123"
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: demo@123
+      MYSQL_ROOT_PASSWORD: demo@123
 # volumes:
 #   my_todo_volume:
 #     external: true
