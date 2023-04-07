@@ -30,8 +30,7 @@ jobs:
         run: |
           docker-compose up -d
 
-
-# build-${{ github.run_number }} BUILD_NUMBER  github.sha    export IMAGE_TAG=${{ github.sha }}
+#github.sha    export IMAGE_TAG=${{ github.sha }}
 
 
 
