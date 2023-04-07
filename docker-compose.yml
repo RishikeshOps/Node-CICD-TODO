@@ -1,7 +1,7 @@
 version : "3.3"
 services: 
   web:
-    image: my-image-name:${{ env.IMAGE_TAG }}
+    image: my-image-name:${env:BUILD_NUMBER}
     ports:
          - "3000:3000"
 #     volumes:
