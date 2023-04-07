@@ -1,7 +1,7 @@
 version : "3.3"
 services: 
   web:
-    image: my-image-name:${env:BUILD_NUMBER}
+    image: my-image-name:${IMAGE_TAG}
     ports:
          - "3000:3000"
 #     volumes:
