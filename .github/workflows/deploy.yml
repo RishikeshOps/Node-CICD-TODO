@@ -18,7 +18,7 @@ jobs:
         
       - name: Set up environment
         run: |
-          export IMAGE_TAG=$BUILD_NUMBER
+          export IMAGE_TAG=${{ github.sha }}
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
       
       - uses: actions/checkout@v3
