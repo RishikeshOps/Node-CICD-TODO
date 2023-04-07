@@ -15,16 +15,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Build Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: false
-          tags: myimage:latest
+      
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: |
+         docker build . --file Dockerfile --tag my-image-name:build-${{ github.run_number }}
           
       - name: Deploy Application & Database 
         run: |
           docker-compose up -d
 
 
+# build-${{ github.run_number }}
