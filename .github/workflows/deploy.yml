@@ -15,11 +15,16 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        
+      - name: Set up environment
+        run: |
+          export IMAGE_TAG=${{ github.sha }}
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
       
       - uses: actions/checkout@v3
       - name: Build the Docker image
         run: |
-         docker build . --file Dockerfile --tag my-image-name:build-${{ github.run_number }}
+         docker build . --file Dockerfile --tag my-image-name:$IMAGE_TAG
           
       - name: Deploy Application & Database 
         run: |
