@@ -18,7 +18,7 @@ jobs:
         
       - name: Set up environment
         run: |
-          export IMAGE_TAG=${{ github.sha }}
+          export IMAGE_TAG=${{ BUILD_NUMBER }}
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
       
       - uses: actions/checkout@v3
@@ -31,4 +31,4 @@ jobs:
           docker-compose up -d
 
 
-# build-${{ github.run_number }}
+# build-${{ github.run_number }} BUILD_NUMBER  github.sha
