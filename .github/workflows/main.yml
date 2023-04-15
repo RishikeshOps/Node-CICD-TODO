@@ -1,4 +1,4 @@
-name: MVRC CI/CD Pipeline
+name:  CI/CD Pipeline
 
 on:
 #   push:
